@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AR-Wizard-rift", "AR-Wizard-rift.csproj", "{FD327F32-C2D5-3E0B-9EB2-BBBC4CA4A554}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AR-Wizard-rift.Editor", "AR-Wizard-rift.Editor.csproj", "{4F6DAFCE-41C5-0760-3B6D-42A7F2AB4344}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD327F32-C2D5-3E0B-9EB2-BBBC4CA4A554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD327F32-C2D5-3E0B-9EB2-BBBC4CA4A554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD327F32-C2D5-3E0B-9EB2-BBBC4CA4A554}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD327F32-C2D5-3E0B-9EB2-BBBC4CA4A554}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F6DAFCE-41C5-0760-3B6D-42A7F2AB4344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F6DAFCE-41C5-0760-3B6D-42A7F2AB4344}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F6DAFCE-41C5-0760-3B6D-42A7F2AB4344}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F6DAFCE-41C5-0760-3B6D-42A7F2AB4344}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
