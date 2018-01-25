@@ -1,0 +1,66 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix arvidaDefault: <http://vocab.arvida.de/2014/fixme/service/vocab#> .
+@prefix core: <http://vocab.arvida.de/2015/06/core/vocab#> .
+@prefix m: <http://vocab.arvida.de/2015/06/maths/vocab#> .
+@prefix service: <http://vocab.arvida.de/2015/06/service/vocab#> .
+@prefix spatial: <http://vocab.arvida.de/2015/06/spatial/vocab#> .
+@prefix streaming: <http://vocab.arvida.de/2015/06/streaming/vocab#> .
+@prefix tracking: <http://vocab.arvida.de/2015/06/tracking/vocab#> .
+@prefix ubitrack: <http://vocab.arvida.de/2015/06/ubitrack/vocab#> .
+@prefix vom: <http://vocab.arvida.de/2015/06/vom/vocab#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+ 
+<>
+    service:coordinateSystems <0/cs> ;
+    service:spatialRelationships <0/sr> ;
+    ubitrack:dfgString """<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<UTQLResponse name=\"ArvidaMarkerTrackerPatterns\" xsi:schemaLocation=\"http://ar.in.tum.de/ubitrack/utql http://ar.in.tum.de/files/ubitrack/utql/utql_types.xsd\" xmlns=\"http://ar.in.tum.de/ubitrack/utql\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">
+    
+</UTQLResponse>"""^^xsd:string ;
+    a spatial:SpatialService .
+ 
+<0/cs>
+    a ldp:Container ;
+    ldp:element <0/cs/node_10>, <0/cs/node_3> .
+ 
+<0/cs/node_10>
+    m:axesUnit vom:Meter ;
+	rdf:label "MarkerCS"^^xsd:string;
+    streaming:subscription <0/cs/node_10/subscriptions> ;
+    ubitrack:markerID "0x272"^^xsd:string ;
+    ubitrack:markerSize 0.059999999999999998 ;
+    a m:RightHandedCartesianCoordinateSystem3D, ubitrack:SquareMarker .
+ 
+<0/cs/node_3>
+    m:axesUnit vom:Meter ;
+	rdf:label "CameraCS"^^xsd:string;
+    streaming:subscription <0/cs/node_3/subscriptions> ;
+    a m:RightHandedCartesianCoordinateSystem3D, ubitrack:Camera .
+ 
+<0/sr>
+    <http://vocab.arvida.de/2014/08/streaming/vocab#subscriptions> <0/sr/subscriptions> ;
+    a ldp:Container ;
+    owl:topObjectProperty <0/sr/pattern_8> .
+ 
+<0/sr/Output>
+    spatial:sourceCoordinateSystem <0/cs/node_3> ;
+    spatial:targetCoordinateSystem <0/cs/node_10> ;
+	rdf:label "OutputSR"^^xsd:string;
+    spatial:timestamp [
+        vom:quantityValue [
+            vom:numericalValue "0"^^xsd:unsignedLong ;
+            vom:unit vom:NanoSecond ;
+            a vom:QuanityValue
+        ] ;
+        a tracking:UnixTimestamp
+    ] ;
+    streaming:subscription <0/sr/pattern_8/subscriptions> ;
+    a core:Output, core:Push, ubitrack:MarkerPose, owl:NamedIndividual .
+ 
+<0/pattern/pattern_1>
+    spatial:spatialRelationship <0/sr/Output> ;    
+	rdf:label "TestPattern"^^xsd:string;        
+    a ubitrack:UtqlPattern, owl:NamedIndividual .

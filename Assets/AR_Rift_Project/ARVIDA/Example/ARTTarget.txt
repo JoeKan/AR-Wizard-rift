@@ -1,0 +1,126 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix arvidaDefault: <http://vocab.arvida.de/2014/fixme/service/vocab#> .
+@prefix core: <http://vocab.arvida.de/2015/06/core/vocab#> .
+@prefix m: <http://vocab.arvida.de/2015/06/maths/vocab#> .
+@prefix service: <http://vocab.arvida.de/2015/06/service/vocab#> .
+@prefix spatial: <http://vocab.arvida.de/2015/06/spatial/vocab#> .
+@prefix streaming: <http://vocab.arvida.de/2015/06/streaming/vocab#> .
+@prefix tracking: <http://vocab.arvida.de/2015/06/tracking/vocab#> .
+@prefix ubitrack: <http://vocab.arvida.de/2015/06/ubitrack/vocab#> .
+@prefix vom: <http://vocab.arvida.de/2015/06/vom/vocab#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+ 
+ 
+<0/cs>
+    a ldp:Container ;
+    ldp:element <0/cs/art_root>, <0/cs/art_sphere_1>, <0/cs/art_sphere_2>, <0/cs/art_sphere_3>.
+ 
+<0/cs/art_root>
+	m:axesUnit vom:Meter ;
+	rdf:label "RootSphere"^^xsd:string;
+	vis:radius 0.12;
+	a m:RightHandedCartesianCoordinateSystem3D, vis:Sphere, vis:ARTTarget .
+
+<0/cs/art_sphere_1>
+	m:axesUnit vom:Meter ;
+	rdf:label "RootSphere"^^xsd:string;
+	vis:radius 0.12;
+	a m:RightHandedCartesianCoordinateSystem3D, vis:Sphere.
+
+<0/cs/art_sphere_2>
+	m:axesUnit vom:Meter ;
+	rdf:label "RootSphere"^^xsd:string;
+	vis:radius 0.12;
+	a m:RightHandedCartesianCoordinateSystem3D, vis:Sphere.
+
+<0/cs/art_sphere_3>
+	m:axesUnit vom:Meter ;
+	rdf:label "RootSphere"^^xsd:string;
+	vis:radius 0.12;
+	a m:RightHandedCartesianCoordinateSystem3D, vis:Sphere.
+
+ 
+<0/sr>
+    <http://vocab.arvida.de/2014/08/streaming/vocab#subscriptions> <0/sr/subscriptions> ;
+    a ldp:Container ;
+    owl:topObjectProperty <0/sr/pattern_8> .
+ 
+<0/sr/Root2Sphere1>
+	spatial:sourceCoordinateSystem <0/cs/art_root>;
+	spatial:targetCoordinateSystem <0/cs/art_sphere_1>;
+	rdf:label "Root2Sphere1"^^xsd:string;
+	spatial:timestamp [
+		vom:quantityValue [
+			vom:numericalValue "11000054548245"^^xsd:unsignedLong ;
+			vom:unit vom:NanoSecond ;
+			a vom:QuanityValue
+		] ;
+		a tracking:UnixTimestamp
+	] ;
+	spatial:translation [
+		vom:quantityValue [
+			m:x 0.1 ;
+			m:y 0.0 ;
+			m:z 0.0 ;
+			vom:unit vom:Meter ;
+			a m:Vector3D
+		] ;
+		a spatial:Translation3D
+	] ;
+    a core:Output, core:Pull, owl:NamedIndividual .
+	
+<0/sr/Root2Sphere1>
+	spatial:sourceCoordinateSystem <0/cs/art_root>;
+	spatial:targetCoordinateSystem <0/cs/art_sphere_2>;
+	rdf:label "Root2Sphere2"^^xsd:string;
+	spatial:timestamp [
+		vom:quantityValue [
+			vom:numericalValue "11000054548245"^^xsd:unsignedLong ;
+			vom:unit vom:NanoSecond ;
+			a vom:QuanityValue
+		] ;
+		a tracking:UnixTimestamp
+	] ;
+	spatial:translation [
+		vom:quantityValue [
+			m:x 0.0 ;
+			m:y 0.15 ;
+			m:z 0.0 ;
+			vom:unit vom:Meter ;
+			a m:Vector3D
+		] ;
+		a spatial:Translation3D
+	] ;
+    a core:Output, core:Pull, owl:NamedIndividual .
+
+<0/sr/Root2Sphere3>
+	spatial:sourceCoordinateSystem <0/cs/art_root>;
+	spatial:targetCoordinateSystem <0/cs/art_sphere_3>;
+	rdf:label "Root2Sphere1"^^xsd:string;
+	spatial:timestamp [
+		vom:quantityValue [
+			vom:numericalValue "11000054548245"^^xsd:unsignedLong ;
+			vom:unit vom:NanoSecond ;
+			a vom:QuanityValue
+		] ;
+		a tracking:UnixTimestamp
+	] ;
+	spatial:translation [
+		vom:quantityValue [
+			m:x 0.0 ;
+			m:y 0.0 ;
+			m:z 0.20 ;
+			vom:unit vom:Meter ;
+			a m:Vector3D
+		] ;
+		a spatial:Translation3D
+	] ;
+    a core:Output, core:Pull, owl:NamedIndividual .
+	
+<0/pattern/pattern_1>
+    spatial:spatialRelationship <0/sr/Root2Sphere1>, <0/sr/Root2Sphere2>, <0/sr/Root2Sphere3> ;    
+	rdf:label "TestPattern"^^xsd:string;        
+    a ubitrack:UtqlPattern, owl:NamedIndividual .

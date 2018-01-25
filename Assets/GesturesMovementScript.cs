@@ -18,15 +18,18 @@ public class GesturesMovementScript : MonoBehaviour
     float startPositionX, oldPositionX;
 
     //shooting the projectile
-    bool shooting = false;
+    bool shooting;
     float startingPointTimer, timer;
-    bool snapshot = false;
+    bool snapshot;
     float projectilePositionX, projectilePositionY, projectilePositionZ, deltaScaling;
 
     //enemyInteraction
     int hitCounter;
 
     void Start () {
+        snapshot = false;
+        shooting = false;
+
         //initialize gameObject center of screen
         xPositionMouse = 0.0f;
         yPositionMouse = 0.0f;
@@ -49,13 +52,13 @@ public class GesturesMovementScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
         //update z position if w or s is pressed (w for farther back, s for closer to the screen)
-        if (Input.GetKey("w"))
+        /*if (Input.GetKey("w"))
             zPositionKeyboard += 0.1f;
         else if (Input.GetKey("s"))
             zPositionKeyboard -= 0.1f;
 
         //update game object position via movement of mouse cursor and z
-        objectToMove.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, zPositionKeyboard));
+        objectToMove.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, zPositionKeyboard));*/
         
         //check for gestures
         if (startGesture)
@@ -127,7 +130,7 @@ public class GesturesMovementScript : MonoBehaviour
         else
         {
             //if we moved more than 2.0f to the left: gesture successful
-            if (continousX - startPositionX <= -2.0f)
+            if (continousX - startPositionX <= -0.5f)
             {
                 startGesture = true;
                 oldPositionX = continousX;
